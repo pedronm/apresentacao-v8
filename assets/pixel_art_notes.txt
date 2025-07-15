@@ -1,0 +1,23 @@
+	
+	Drawing out characters 
+		
+		8bits 
+			characters at the size of the background
+			unrealistic
+		
+		128bits or 256 or more 
+			more detailed
+			realistic
+			getting closer to illustration
+			
+			
+	
+	steps 
+		
+		1. silhouete
+		2. outline
+		3. facial expression
+		4. flat colours
+		5. basic shading 
+		6. highlights
+		7. details	
