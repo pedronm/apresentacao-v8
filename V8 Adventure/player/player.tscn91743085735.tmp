@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfs5gebf2shjq"]
+[gd_scene load_steps=9 format=3 uid="uid://cfs5gebf2shjq"]
 
 [ext_resource type="Script" uid="uid://b1km7518kawcd" path="res://player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://d112vr7kftnci" path="res://player/main_char.png" id="2_g1dw6"]
-[ext_resource type="AudioStream" uid="uid://ohhmsy06gq43" path="res://effects/jump_effect.mp3" id="3_g1dw6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk2v"]
 radius = 4.0
-height = 22.6667
+height = 16.0
 
 [sub_resource type="Animation" id="Animation_g1dw6"]
 length = 0.001
@@ -21,23 +20,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [7]
-}
-
-[sub_resource type="Animation" id="Animation_qjkh3"]
-resource_name = "jump"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anchor/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
 }
 
 [sub_resource type="Animation" id="Animation_rkbax"]
@@ -74,6 +56,23 @@ tracks/0/keys = {
 "values": [3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_qjkh3"]
+resource_name = "jump"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g1dw6"]
 _data = {
 &"RESET": SubResource("Animation_g1dw6"),
@@ -82,12 +81,9 @@ _data = {
 &"stand": SubResource("Animation_yw30f")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
-size = Vector2(5.96977, 15.5447)
-
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
-scale = Vector2(1.985, 1.985)
+scale = Vector2(3, 3)
 script = ExtResource("1_rkbax")
 
 [node name="Anchor" type="Node2D" parent="."]
@@ -106,18 +102,3 @@ libraries = {
 &"": SubResource("AnimationLibrary_g1dw6")
 }
 autoplay = "jump"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.685, 1.685)
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1.00756, -2.01511)
-shape = SubResource("RectangleShape2D_rkbax")
-
-[node name="JumpEffect" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_g1dw6")
-volume_db = -6.445
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
